@@ -60,7 +60,7 @@ function Content() {
 
   const [verificationResponse, setVerificationResponse] = useSessionStorage<
     VerificationResponse | undefined
-  >(`mint-${address}`, undefined);
+  >(`mint-${CONTRACT_ADDRESS}-${address}`, undefined);
 
   useEffect(() => {
     setIsReclaiming(false);
@@ -88,8 +88,6 @@ function Content() {
     functionName: "ownerOf",
     args: tokenId,
   });
-
-  console.log("Token ID", tokenId);
 
   const hasMinted = !!tokenId?.toNumber();
   const owner = ownerData as string | undefined;
