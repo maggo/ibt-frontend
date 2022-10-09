@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         <h1 className="mb-10 text-center text-6xl">CapybaraDAO</h1>
 
         <a
-          href="https://snapshot.org/#/"
+          href="https://snapshot.org/#/capybaradao.eth"
           className="mb-8 block text-center text-xl underline"
         >
           Have a look at our important Snapshot votes!!1
