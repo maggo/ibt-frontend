@@ -91,7 +91,7 @@ function Content() {
 
   console.log("Token ID", tokenId);
 
-  const hasMinted = !tokenId?.isZero;
+  const hasMinted = !!tokenId?.toNumber();
   const owner = ownerData as string | undefined;
 
   const addressOwnsToken = address === owner;
@@ -131,31 +131,6 @@ function Content() {
             setVerificationResponse(verificationResponse);
           }}
         />
-      </>
-    );
-  }
-
-  if (!isConnected) {
-    if (hasMinted) {
-      return (
-        <>
-          <div>
-            You&apos;ve already minted a CapybaraDAO IBT! It&apos;s owned by{" "}
-            <Address address={owner} />
-          </div>
-          <div className="flex justify-center">
-            <ConnectButton />
-          </div>
-        </>
-      );
-    }
-
-    return (
-      <>
-        <div>You haven&apos;t minted your IBT for CapybaraDAO yet</div>
-        <div className="flex justify-center">
-          <ConnectButton />
-        </div>
       </>
     );
   }
