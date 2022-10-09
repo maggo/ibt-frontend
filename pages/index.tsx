@@ -9,11 +9,11 @@ const Flow = dynamic(() => import("../containers/Flow").then((m) => m.Flow), {
 
 const Home: NextPage = () => {
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid h-full grid-cols-5 items-center">
       <Head>
         <title>Iris-bound Tokens</title>
       </Head>
-      <div className="col-span-2 p-8 text-center">
+      <div className="col-span-3 p-8 text-center">
         <h1 className="mb-10 text-center text-6xl">CapybaraDAO</h1>
 
         <a
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       </div>
       <img
         src="https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capybara-square-1-400x400.jpg.webp"
-        className="h-full w-full object-cover"
+        className="col-span-2 h-full w-full object-cover"
         alt=""
       />
     </div>
