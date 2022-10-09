@@ -84,6 +84,8 @@ function Content() {
     args: tokenId,
   });
 
+  console.log("Token ID", tokenId);
+
   const hasMinted = !!tokenId;
   const owner = ownerData as string | undefined;
 
