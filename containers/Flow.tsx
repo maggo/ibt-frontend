@@ -21,6 +21,7 @@ import { WorldIDWidget } from "@worldcoin/id";
 import { defaultAbiCoder } from "ethers/lib/utils";
 import { useSessionStorage } from "usehooks-ts";
 import { Address } from "../components/Address";
+import { BigNumber } from "ethers";
 
 const CONTRACT_ADDRESS = "0x9309bd93a8b662d315Ce0D43bb95984694F120Cb";
 
@@ -70,12 +71,16 @@ function Content() {
     hash: txId,
   });
 
-  const { data: tokenId } = useContractRead({
+  const { data: tokenIdData } = useContractRead({
     addressOrName: CONTRACT_ADDRESS,
     contractInterface: abi,
     functionName: "nullifierHashToTokenId",
     args: verificationResponse?.nullifier_hash,
   });
+
+  const tokenId = BigNumber.isBigNumber(tokenIdData)
+    ? BigNumber.from(tokenIdData)
+    : undefined;
 
   const { data: ownerData } = useContractRead({
     addressOrName: CONTRACT_ADDRESS,
@@ -86,7 +91,7 @@ function Content() {
 
   console.log("Token ID", tokenId);
 
-  const hasMinted = !!tokenId;
+  const hasMinted = !tokenId?.isZero;
   const owner = ownerData as string | undefined;
 
   const addressOwnsToken = address === owner;
