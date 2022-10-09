@@ -136,7 +136,7 @@ function Content() {
   if (txLoading) {
     return (
       <>
-        Minting your IBT…{" "}
+        {isReclaiming ? "Moving your IBT…" : "Minting your IBT…"}{" "}
         {!!chain?.blockExplorers?.default && (
           <a
             target="_blank"
