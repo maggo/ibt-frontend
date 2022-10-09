@@ -4,12 +4,25 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { publicProvider } from "wagmi/providers/public";
 import "../styles/globals.css";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [chain.polygon, chain.mainnet],
   [
+    jsonRpcProvider({
+      rpc: (chain) =>
+        chain.id === 137
+          ? {
+              http: `https://poly-mainnet.gateway.pokt.network/v1/lb/160ec40757aaf5b5e6829e97`,
+            }
+          : chain.id === 1
+          ? {
+              http: `https://eth-mainnet.gateway.pokt.network/v1/lb/160ec40757aaf5b5e6829e97`,
+            }
+          : null,
+    }),
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
     publicProvider(),
   ]

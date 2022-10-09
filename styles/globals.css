@@ -6,7 +6,7 @@
   html,
   body,
   #__next,
-  [data-rk] {
+  #__next > [data-rk] {
     height: 100%;
   }
   body {
