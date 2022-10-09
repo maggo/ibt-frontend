@@ -23,7 +23,7 @@ import { useSessionStorage } from "usehooks-ts";
 import { Address } from "../components/Address";
 import { BigNumber } from "ethers";
 
-const CONTRACT_ADDRESS = "0x9309bd93a8b662d315Ce0D43bb95984694F120Cb";
+const CONTRACT_ADDRESS = "0x41e727A4c19EEA4B7D0A079688268F3E74D4F6F0";
 
 export function Flow() {
   const { isConnected, address } = useAccount();
