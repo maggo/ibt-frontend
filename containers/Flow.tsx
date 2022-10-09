@@ -115,7 +115,7 @@ function Content() {
         <WorldIDWidget
           actionId={CONTRACT_ADDRESS}
           signal={address}
-          debug
+          debug={false}
           theme="dark"
           appName="Iris-bound Tokens"
           signalDescription="Mint your Iris-bound token"
